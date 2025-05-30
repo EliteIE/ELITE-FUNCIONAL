@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteControl - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="fonts/inter.css">
+    <style>
+        /* Fallback para fontes */
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter'), url('fonts/Inter-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter Medium'), url('fonts/Inter-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter SemiBold'), url('fonts/Inter-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter Bold'), url('fonts/Inter-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="images/logo.png" alt="EliteControl Logo" class="login-logo">
+                <h1 class="login-title">EliteControl</h1>
+                <p class="login-subtitle">Seu sistema de gestão inteligente</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="perfil">Setor / Cargo</label>
+                    <select id="perfil" name="perfil" required>
+                        <option value="">Selecione seu perfil</option>
+                        <option value="gerente">Dono/Gerente</option>
+                        <option value="inventario">Controlador de Estoque</option>
+                        <option value="vendas">Vendedor</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Seu email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Sua senha" required>
+                </div>
+                
+                <div id="loginErrorMessage" class="login-error hidden"></div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn-primary btn-block">Entrar</button>
+                </div>
+                
+                <div class="login-help">
+                    <p>Credenciais para teste:</p>
+                    <ul>
+                        <li><strong>Dono/Gerente:</strong> admin@elitecontrol.com / admin123</li>
+                        <li><strong>Estoque:</strong> estoque@elitecontrol.com / estoque123</li>
+                        <li><strong>Vendedor:</strong> vendas@elitecontrol.com / vendas123</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        
+        <div class="login-footer">
+            &copy; 2025 EliteControl. Todos os direitos reservados.
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/elitecontrol-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

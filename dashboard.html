@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteControl - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="fonts/inter.css">
+    <style>
+        /* Fallback para fontes */
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter'), url('fonts/Inter-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter Medium'), url('fonts/Inter-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter SemiBold'), url('fonts/Inter-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter Bold'), url('fonts/Inter-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+    </style>
+    <script src="js/chart.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="images/logo.png" alt="EliteControl Logo" width="32" height="32">
+                <span class="header-logo-text">EliteControl</span>
+            </div>
+            
+            <div class="header-actions">
+                <!-- Notificações -->
+                <div class="relative">
+                    <button id="notificationBellButton" class="p-3 rounded-full hover:bg-slate-800 relative">
+                        <i class="fas fa-bell"></i>
+                        <span id="notificationCountBadge" class="notification-badge hidden">0</span>
+                    </button>
+                    
+                    <div id="notificationDropdown" class="notification-dropdown hidden">
+                        <div class="notification-header">
+                            <span class="notification-title">Notificações</span>
+                            <span id="markAllAsReadButton" class="notification-action">Marcar todas como lidas</span>
+                        </div>
+                        <div id="notificationList" class="notification-list">
+                            <!-- Notificações serão inseridas aqui via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu do Usuário -->
+                <div class="user-menu">
+                    <button id="userMenuButton" class="user-button">
+                        <div id="userAvatar" class="user-avatar">
+                            <span id="userInitials">U</span>
+                        </div>
+                        <div class="user-info">
+                            <div id="usernameDisplay" class="user-name">Usuário</div>
+                            <div id="userRoleDisplay" class="user-role">Cargo</div>
+                        </div>
+                    </button>
+                    
+                    <div id="userDropdown" class="user-dropdown hidden">
+                        <div class="user-dropdown-header">
+                            <div class="user-dropdown-avatar">
+                                <span id="userDropdownInitials">U</span>
+                            </div>
+                            <div id="userDropdownName" class="user-dropdown-name">Usuário</div>
+                            <div id="userDropdownEmail" class="user-dropdown-email">usuario@exemplo.com</div>
+                        </div>
+                        
+                        <ul class="user-dropdown-menu">
+                            <li class="user-dropdown-item">
+                                <i class="fas fa-user user-dropdown-item-icon"></i>
+                                <span>Meu Perfil</span>
+                            </li>
+                            <li class="user-dropdown-item">
+                                <i class="fas fa-cog user-dropdown-item-icon"></i>
+                                <span>Configurações</span>
+                            </li>
+                            <div class="user-dropdown-divider"></div>
+                            <li id="logoutButton" class="user-dropdown-item user-dropdown-item-logout">
+                                <i class="fas fa-sign-out-alt user-dropdown-item-icon"></i>
+                                <span>Sair</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div id="sidebarProfileName" class="sidebar-title">Painel Vendedor</div>
+        </div>
+        
+        <nav id="navLinks" class="nav-section">
+            <!-- Links de navegação serão inseridos aqui via JavaScript -->
+        </nav>
+    </aside>
+    
+    <!-- Conteúdo Principal -->
+    <main id="mainContent" class="main-content">
+        <div class="page-header">
+            <h1 id="pageTitle" class="page-title">Painel Vendedor</h1>
+            <p id="pageSubtitle" class="page-subtitle">Sua visão personalizada.</p>
+        </div>
+        
+        <!-- Área de Conteúdo Dinâmico -->
+        <div id="dynamicContentArea">
+            <!-- KPIs -->
+            <div id="kpiContainer" class="kpi-container">
+                <!-- KPIs serão inseridos aqui via JavaScript -->
+                <div class="kpi-card">
+                    <div class="kpi-icon-wrapper">
+                        <i class="fas fa-dollar-sign kpi-icon"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-title">Minhas Vendas (Hoje)</div>
+                        <div class="kpi-value">R$ 0,00</div>
+                    </div>
+                </div>
+                
+                <div class="kpi-card">
+                    <div class="kpi-icon-wrapper">
+                        <i class="fas fa-shopping-cart kpi-icon"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-title">Nº de Vendas (Hoje)</div>
+                        <div class="kpi-value">0</div>
+                    </div>
+                </div>
+                
+                <div class="kpi-card">
+                    <div class="kpi-icon-wrapper">
+                        <i class="fas fa-box kpi-icon"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-title">Produtos Disponíveis</div>
+                        <div class="kpi-value">0</div>
+                    </div>
+                </div>
+                
+                <div class="kpi-card">
+                    <div class="kpi-icon-wrapper">
+                        <i class="fas fa-plus kpi-icon"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-title">Nova Venda</div>
+                        <div class="kpi-value">
+                            <button class="btn-primary" id="newSaleButton">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gráficos -->
+            <div id="chartsContainer" class="charts-container">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Vendas por Período</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action-btn" id="salesChartOptionsButton">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-content">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Produtos Mais Vendidos</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action-btn" id="productsChartOptionsButton">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-content">
+                        <canvas id="productsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Atividades Recentes -->
+            <div class="activities-card">
+                <div class="activities-header">
+                    <h3 class="activities-title">Atividades Recentes</h3>
+                </div>
+                <ul id="recentActivitiesContainer" class="activities-list">
+                    <!-- Atividades serão inseridas aqui via JavaScript -->
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">Bem-vindo ao novo EliteControl! Sistema atualizado com sucesso.</div>
+                            <div class="activity-time">Agora</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Alertas Temporários -->
+    <div id="temporaryAlertsContainer" class="temporary-alerts-container"></div>
+    
+    <!-- Modal Placeholder -->
+    <div id="modalPlaceholder"></div>
+    
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/elitecontrol-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
